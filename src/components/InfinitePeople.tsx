@@ -1,7 +1,6 @@
 import InfiniteScroll from "react-infinite-scroller";
 import { useInfiniteQuery } from "@tanstack/react-query";
-// import { Pokemon } from "./Pokemon"
-import { Person } from "./Person"
+import { Person } from "./Person";
 
 const initialUrl = "https://swapi.dev/api/people/";
 const fetchUrl = async (url) => {
@@ -9,7 +8,7 @@ const fetchUrl = async (url) => {
   return response.json();
 };
 
-export function InfinitePokemon() {
+export function InfinitePeople() {
   const { 
     data, 
     fetchNextPage, 
@@ -37,25 +36,26 @@ export function InfinitePokemon() {
   return(
     <>
     { isFetching && <div className="loading">Loading...</div>}
-	<InfiniteScroll
-      dataLength={data.pages.length} // This is important field to render the next data
-      next={fetchNextPage}
-      hasMore={hasNextPage}
-      loader={<h4>Loading...</h4>}
-      endMessage={
-        <p style={{ textAlign: 'center' }}>
-          <b>Yay! You have seen it all</b>
-        </p>
-      }
+    <InfiniteScroll
+     loadMore={ () => {
+      if(!isFetching) {
+        fetchNextPage();
+      } 
+      }}
+     hasMore={hasNextPage}
     >
-      {data.pages.map((group, i) => (
-        // Using 'name' as key isn't recommended if names can be non-unique
-        <div key={i}>
-          {group.results.map((person) => (
-            <div key={person.name}>{person.name}</div>
-          ))}
-        </div>
-      ))}
+    {data.pages.map((pageData) => {
+      return pageData.results.map((person) => {
+        return(
+          <Person
+            key={person.name}
+            name={person.name}
+            hairColor={person.hair_color}
+            eyeColor={person.eye_color} 
+          />
+        );
+      });
+    })}
     </InfiniteScroll>
   </>
   );

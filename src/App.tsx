@@ -21,7 +21,7 @@ function App() {
       </div>
       <h1>Reacting to Pokemon</h1>
       <div className="card">
-        {/* <InfinitePokemon /> */}
+        <InfinitePokemon />
       </div>
       <p className="read-the-docs">
         <a href={ buyMeACoffeeURL } target="_blank" className="coffeeLink">Click here to buy us a coffee if you like what we do.</a>
