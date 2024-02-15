@@ -1,9 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { InfinitePokemon } from './components/InfinitePokemon'
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import InfinitePokemon from './components/InfinitePokemon'
 import logoOak from './assets/oak.svg'
 import './App.css'
 
@@ -11,9 +8,6 @@ function App() {
 
   const queryClient = new QueryClient()
   const buyMeACoffeeURL: string = 'https://buymeacoffee.com/punreliable'
-
-
-  const [count, setCount] = useState(0)
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -27,9 +21,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <InfinitePokemon />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
