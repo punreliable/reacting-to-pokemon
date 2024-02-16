@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import InfinitePokemon from './components/InfinitePokemon'
+import { InfinitePokemon } from './components/InfinitePokemon'
 import logoOak from './assets/oak.svg'
 import './App.scss'
 
