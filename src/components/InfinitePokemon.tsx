@@ -17,19 +17,22 @@ export function InfinitePokemon() {
     isError,
     error,
   } = useInfiniteQuery({
-    queryKey: ['results'],
+    queryKey: ['pokemon'],
+
+
     queryFn: ({pageParam = pokeUrl} ) => fetchUrl(pageParam), 
     getNextPageParam: (lastPage) => {
-      return lastPage.next || undefined;
+      return lastPage.next || undefined
     },
-  });
+    initialPageParam: pokeUrl,
+  })
 
   if (isLoading) {
-    return <div className="loading">Loading...</div>;
+    return <div className="loading">Loading...</div>
   }
 
   if (isError) {
-    return <div>Error! {error.toString()}</div>;
+    return <div>Error! {error.toString()}</div>
   }
 
   return(
@@ -72,5 +75,4 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-
 `;
