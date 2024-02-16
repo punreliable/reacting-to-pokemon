@@ -2,11 +2,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import InfinitePokemon from './components/InfinitePokemon'
 import logoOak from './assets/oak.svg'
+import { Pokemon } from './components/Pokemon'
+import fetchUrl from './scripts/fetchUrl'
 import './App.scss'
 
 function App() {
 
   const queryClient = new QueryClient()
+  
   const buyMeACoffeeURL: string = 'https://buymeacoffee.com/punreliable'
 
   return (
