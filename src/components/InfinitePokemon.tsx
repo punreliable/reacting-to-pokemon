@@ -10,8 +10,7 @@ const pokeUrl:string = "https://pokeapi.co/api/v2/pokemon"
 export function InfinitePokemon() {
   const { 
     data, 
-    fetchNextPage, 
-    hasNextPage,
+    fetchNextPage,
     isFetching,
     isLoading,
     isError,
