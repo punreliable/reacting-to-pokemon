@@ -18,8 +18,6 @@ export function InfinitePokemon() {
     error,
   } = useInfiniteQuery({
     queryKey: ['pokemon'],
-
-
     queryFn: ({pageParam = pokeUrl} ) => fetchUrl(pageParam), 
     getNextPageParam: (lastPage) => {
       return lastPage.next || undefined
