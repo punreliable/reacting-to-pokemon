@@ -1,10 +1,13 @@
-import InfiniteScroll from "react-infinite-scroller";
-import { useInfiniteQuery } from "@tanstack/react-query";
-// import { Pokemon } from "./Pokemon"
-import { Person } from "./Person"
-import { fetchUrl } from "../scripts/fetchUrl";
+import InfiniteScroll from "react-infinite-scroller"
+import { useInfiniteQuery } from "@tanstack/react-query"
+import { Pokemon } from './Pokemon'
+import { Person } from './Person'
+import { fetchUrl } from '../scripts/fetchUrl'
+import prettyName from '../scripts/prettyName'
+import styled from 'styled-components'
 
-const initialUrl = "https://swapi.dev/api/people/";
+const initialUrl:string = "https://swapi.dev/api/people/"
+const pokeUrl:string = "https://pokeapi.co/api/v2/pokemon"
 
 export function InfinitePokemon() {
   const { 
@@ -16,8 +19,8 @@ export function InfinitePokemon() {
     isError,
     error,
   } = useInfiniteQuery({
-    queryKey: ['sw-people'],
-    queryFn: ({pageParam = initialUrl} ) => fetchUrl(pageParam), 
+    queryKey: ['results'],
+    queryFn: ({pageParam = pokeUrl} ) => fetchUrl(pageParam), 
     getNextPageParam: (lastPage) => {
       return lastPage.next || undefined;
     },
@@ -45,14 +48,31 @@ export function InfinitePokemon() {
         </p>
       }
     >
-      {data?.pages.map((group: { results: typeof Person[] }, i) => (
-        <div key={i}>
-          {group?.results.map((person: typeof Person) => (
-            <div key={person.name}>{person.name}</div>
-          ))}
-        </div>
+      {data?.pages.map((group: { results: typeof Pokemon[] }, i) => (
+          <PokemonWrapper key={i}>
+            {group?.results.map((pokemon: typeof Pokemon) => (
+              <SinglePokemon key={pokemon.name}>
+                {prettyName(pokemon.name)}
+              </SinglePokemon>
+            ))}
+          </PokemonWrapper>
       ))}
     </InfiniteScroll>
   </>
   );
+
+
+
 }
+
+export const SinglePokemon = styled.div`
+padding: 2rem;
+`;
+
+export const PokemonWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+`;
