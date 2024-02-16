@@ -37,15 +37,10 @@ export function InfinitePokemon() {
     <>
     { isFetching && <div className="loading">Loading...</div>}
 	<InfiniteScroll
-      dataLength={data?.pages.length}
-      next={fetchNextPage}
-      hasMore={hasNextPage}
-      loader={<h4>Loading...</h4>}
-      endMessage={
-        <p style={{ textAlign: 'center' }}>
-          <b>Yay! You have seen it all</b>
-        </p>
-      }
+      pageStart={0}
+      loadMore={fetchNextPage}
+      hasMore={true || false}
+      loader={<div className="loader" key={0}>Loading ...</div>}
     >
       {data?.pages.map((group: { results: typeof Pokemon[] }, i) => (
           <PokemonWrapper key={i}>
