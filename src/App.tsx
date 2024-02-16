@@ -1,12 +1,12 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import InfinitePokemon from './components/InfinitePokemon'
+import { InfinitePokemon } from './components/InfinitePokemon'
 import logoOak from './assets/oak.svg'
-import { Pokemon } from './components/Pokemon'
-import fetchUrl from './scripts/fetchUrl'
 import './App.scss'
 
 function App() {
+
+  const pokeAPIURL: string = 'https://pokeapi.co'
 
   const queryClient = new QueryClient()
   
@@ -15,8 +15,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div>
-        <a href="https://pokeapi.co" target="_blank">
-          <img src={logoOak} className="logo" alt="Professor Oak logo" />
+        <a href={pokeAPIURL} target="_blank">
+          <img src={logoOak} className="logo" alt="Professor Oak" />
         </a>
         {/* <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
