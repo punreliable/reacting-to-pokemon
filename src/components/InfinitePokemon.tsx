@@ -1,12 +1,10 @@
 import InfiniteScroll from "react-infinite-scroller"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { Pokemon } from './Pokemon'
-import { Person } from './Person'
 import { fetchUrl } from '../scripts/fetchUrl'
 import prettyName from '../scripts/prettyName'
 import styled from 'styled-components'
 
-const initialUrl:string = "https://swapi.dev/api/people/"
 const pokeUrl:string = "https://pokeapi.co/api/v2/pokemon"
 
 export function InfinitePokemon() {
