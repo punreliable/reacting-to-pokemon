@@ -6,11 +6,9 @@ import './App.scss'
 
 function App() {
 
-  const pokeAPIURL: string = 'https://pokeapi.co'
-
-  const queryClient = new QueryClient()
-  
   const buyMeACoffeeURL: string = 'https://buymeacoffee.com/punreliable'
+  const pokeAPIURL: string = 'https://pokeapi.co'
+  const queryClient = new QueryClient()
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -18,17 +16,18 @@ function App() {
         <a href={pokeAPIURL} target="_blank">
           <img src={logoOak} className="logo" alt="Professor Oak" />
         </a>
-        {/* <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a> */}
       </div>
       <h1>Reacting to Pokemon</h1>
       <div className="card">
         <InfinitePokemon />
       </div>
-      <p className="read-the-docs">
-        <a href={ buyMeACoffeeURL } target="_blank" className="coffeeLink">Click here to buy us a coffee if you like what we do.</a>
-      </p>
+      <div className="card">
+        <p className="read-the-docs">
+          <a href={ buyMeACoffeeURL } target="_blank" className="coffeeLink">
+            Click here to buy us a coffee if you like what we do.
+          </a>
+        </p>
+      </div>
       <ReactQueryDevtools />
     </QueryClientProvider>
   )

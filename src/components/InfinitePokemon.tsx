@@ -17,7 +17,7 @@ export function InfinitePokemon() {
     error,
   } = useInfiniteQuery({
     queryKey: ['pokemon'],
-    queryFn: ({pageParam = pokeUrl} ) => fetchUrl(pageParam), 
+    queryFn: ({pageParam = pokeUrl}) => fetchUrl(pageParam), 
     getNextPageParam: (lastPage) => {
       return lastPage.next || undefined
     },
@@ -37,7 +37,7 @@ export function InfinitePokemon() {
     { isFetching && <div className="loading">Loading...</div>}
 	<InfiniteScroll
       pageStart={0}
-      loadMore={()=>{fetchNextPage}}
+      loadMore={fetchNextPage}
       hasMore={true || false}
       loader={<div className="loader" key={0}>Loading ...</div>}
     >
